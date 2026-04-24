@@ -11,6 +11,18 @@ body {
   color: white;
 }
 
+.user-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-list li {
+  padding: 6px;
+  margin: 4px 0;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  font-size: 14px;
+}
 /* Layout */
 .app {
   display: flex;
