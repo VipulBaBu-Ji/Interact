@@ -44,6 +44,13 @@ const roomControls = document.querySelector(".room-controls");
 const roomStatus = document.querySelector(".room-status");
 const currentUser = localStorage.getItem("user");
 
+socket.on("disconnect", () => {
+  const username = users[socket.id];
+  delete users[socket.id];
+
+  io.emit("userList", Object.values(users));
+  io.emit("message", `${username} left`);
+});
 socket.on("userList", (users) => {
   const ul = document.getElementById("userList");
   ul.innerHTML = "";
