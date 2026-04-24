@@ -467,6 +467,13 @@ function leaveChat() {
   messages.style.display = "none";
   typingDiv.style.display = "none";
 }
+socket.on("typing", (user) => {
+  document.getElementById("typing").innerText = `${user} is typing...`;
+});
+
+socket.on("stopTyping", () => {
+  document.getElementById("typing").innerText = "";
+});
 
 socket.on("message", (data) => {
   renderMessage(data);
