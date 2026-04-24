@@ -4,6 +4,98 @@ body {
     background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f172a 100%);
     color: white;
 }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* Layout */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Chat */
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Messages */
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Chat bubbles */
+.message {
+  max-width: 60%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 12px;
+  background: #1e293b;
+}
+
+.me {
+  background: #3b82f6;
+  align-self: flex-end;
+}
+
+/* Input */
+.input-area {
+  display: flex;
+  padding: 10px;
+  background: #020617;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #1e293b;
+  color: white;
+}
+
+.input-area button {
+  margin-left: 10px;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+.btn.red {
+  background: #ef4444;
+}
+
+/* Typing */
+.typing {
+  padding-left: 20px;
+  color: #94a3b8;
+  font-size: 14px;
+}
 
 .app {
     display: flex;
