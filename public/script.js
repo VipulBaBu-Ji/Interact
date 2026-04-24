@@ -102,6 +102,16 @@ const translationMap = {
   }
 };
 
+socket.on("userList", (users) => {
+  const ul = document.getElementById("userList");
+  ul.innerHTML = "";
+
+  users.forEach((user) => {
+    const li = document.createElement("li");
+    li.innerText = "🟢 " + user;
+    ul.appendChild(li);
+  });
+});
 function translateText(text, lang) {
   if (lang === "en") return text;
   const map = translationMap[lang] || {};
