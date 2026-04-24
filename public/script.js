@@ -8,6 +8,7 @@ let chatMode = "global";
 let currentRoom = null;
 let currentTargetId = null;
 let currentTargetName = "";
+let users = {}; // socket.id -> username
 
 // Initialize user from localStorage
 const storedUser = localStorage.getItem("currentUser");
@@ -129,6 +130,14 @@ socket.on("userList", (users) => {
     li.innerText = "🟢 " + user;
     ul.appendChild(li);
   });
+  socket.on("join", (username) => {
+  users[socket.id] = username;
+
+  // Send updated list to all clients
+  io.emit("userList", Object.values(users));
+
+  io.emit("message", `${username} joined`);
+});
 });
 function translateText(text, lang) {
   if (lang === "en") return text;
