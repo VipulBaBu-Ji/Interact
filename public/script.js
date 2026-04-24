@@ -108,6 +108,15 @@ function translateText(text, lang) {
   return map[text] || text;
 }
 
+function logout() {
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  window.location.href = "auth.html";
+}
+
+function goAdmin() {
+  window.location.href = "admin-login.html";
+}
 function updateLanguageUI() {
   currentLanguage = languageSelect.value;
   translationStatus.textContent = `Current: ${languageSelect.options[languageSelect.selectedIndex].text}`;
