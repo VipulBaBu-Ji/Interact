@@ -10,6 +10,34 @@
 <div class="app">
 
     <button onclick="logout()" style="background:red;">Logout</button>
+    <div class="app">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>💬 Chat</h2>
+
+    <button onclick="logout()" class="btn red">Logout</button>
+    <button onclick="goAdmin()" class="btn">Admin</button>
+
+    <input type="file" id="fileInput" />
+    <button onclick="uploadFile()" class="btn">Upload</button>
+  </div>
+
+  <!-- Chat Area -->
+  <div class="chat">
+    
+    <div id="messages" class="messages"></div>
+
+    <div id="typing" class="typing"></div>
+
+    <div class="input-area">
+      <input id="message" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+  </div>
+
+</div>
 
     <div class="sidebar">
         <div class="sidebar-section">
