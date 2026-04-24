@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login / Signup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: #334155;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2 id="title">Login</h2>
+
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="submitForm()">Login</button>
+
+  <div class="toggle" onclick="toggleMode()">
+    Don't have an account? Signup
+  </div>
+</div>
+
+<script>
+let isLogin = true;
+
+function toggleMode() {
+  isLogin = !isLogin;
+  document.getElementById("title").innerText = isLogin ? "Login" : "Signup";
+  document.querySelector("button").innerText = isLogin ? "Login" : "Signup";
+  document.querySelector(".toggle").innerText = isLogin 
+    ? "Don't have an account? Signup" 
+    : "Already have an account? Login";
+}
+
+function submitForm() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  if (isLogin) {
+    if (users[username] === password) {
+      localStorage.setItem("currentUser", username);
+      window.location.href = "index.html";
+    } else {
+      alert("Invalid credentials");
+    }
+  } else {
+    users[username] = password;
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Signup successful! Now login.");
+    toggleMode();
+  }
+}
+</script>
+
+</body>
+</html>
