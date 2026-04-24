@@ -41,6 +41,24 @@ const chatModeLabel = document.getElementById("chatModeLabel");
 const dmControls = document.querySelector(".dm-controls");
 const roomControls = document.querySelector(".room-controls");
 const roomStatus = document.querySelector(".room-status");
+const currentUser = localStorage.getItem("user");
+
+socket.on("userList", (users) => {
+  const ul = document.getElementById("userList");
+  ul.innerHTML = "";
+
+  users.forEach((user) => {
+    const li = document.createElement("li");
+
+    if (user === currentUser) {
+      li.innerHTML = "🟢 <b>" + user + " (You)</b>";
+    } else {
+      li.innerText = "🟢 " + user;
+    }
+
+    ul.appendChild(li);
+  });
+});
 
 const translationMap = {
   es: {
